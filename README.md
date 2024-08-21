@@ -1,11 +1,25 @@
-# React + TypeScript + Vite
+# Restaurant Reservation SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a web app for managing restaurant reservations.
+It uses React + TS + Vite for the frontend, TailwindCSS for styling, and React Query for data fetching and caching. The application features a responsive design with glassmorphism styling for the reservation cards.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+
+- **React**: Frontend framework for building the user interface.
+- **TailwindCSS**: Utility-first CSS framework for styling.
+- **React Query**: Data-fetching and state management library for handling server state.
+- **TypeScript**: TypeScript for type safety.
+- **Vite**: Build tool for fast development.
+
+## Setup Instructions
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Pooreffects/resto-yassir.git
+   cd restaurant-reservation-system
+   ```
 
 ## Expanding the ESLint configuration
 
@@ -22,7 +36,7 @@ export default tseslint.config({
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
@@ -31,7 +45,7 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from 'eslint-plugin-react';
 
 export default tseslint.config({
   // Set the react version
@@ -46,5 +60,5 @@ export default tseslint.config({
     ...react.configs.recommended.rules,
     ...react.configs['jsx-runtime'].rules,
   },
-})
+});
 ```
