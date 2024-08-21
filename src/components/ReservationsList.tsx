@@ -15,6 +15,7 @@ import {
   filterReservations,
   sortReservations,
 } from '../utils/reservationsUtils';
+import Sidebar from './Sidebar';
 
 export default function ReservationsList() {
   // Fetch reservations data
@@ -31,12 +32,16 @@ export default function ReservationsList() {
     shiftFilter: null,
     areaFilter: null,
   });
+
+  /* Sidebar Toggle */
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const [sortType, setSortType] = useState<SortType>({
     field: 'quantity',
     direction: 'asc',
   });
 
-  // Memoized and filtered/sorted data
+  // Memoized filtered/sorted data
   const filteredAndSortedData = useMemo(() => {
     if (!data) return [];
 
@@ -62,9 +67,43 @@ export default function ReservationsList() {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <section className='w-full h-full flex flex-col items-center content-center p-6'>
-      <h2 className='text-xl font-semibold my-8 text-sky-300'>Restaurant Rervations List</h2>
-      <div className='w-full flex items-center justify-between'>
+    <section className='w-full h-full flex flex-col items-center content-center py-4'>
+      <h2 className='text-lg md:text-lg lg:text-xl xl:text-2xl font-semibold my-4 text-sky-300'>
+        Restaurant Rervations List
+      </h2>
+
+      <button
+        className='lg:hidden block text-indigo-200 mb-2'
+        onClick={() => setSidebarOpen(true)}
+      >
+        <svg
+          className='w-8 h-8'
+          fill='none'
+          stroke='currentColor'
+          viewBox='0 0 24 24'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <path
+            strokeLinecap='round'
+            strokeLinejoin='round'
+            strokeWidth='2'
+            d='M4 6h16M4 12h16m-7 6h7'
+          ></path>
+        </svg>
+      </button>
+
+      <Sidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        filterOptions={filterOptions}
+        setFilterOptions={setFilterOptions}
+        sortType={sortType}
+        setSortType={setSortType}
+      />
+
+      <div className='hidden md:w-full lg:flex items-center justify-between'>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <Filters
           filterOptions={filterOptions}

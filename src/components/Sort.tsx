@@ -22,9 +22,10 @@ export default function Sort({ sortType, setSortType }: SortProps) {
   };
 
   return (
-    <div className='w-1/4 flex items-center justify-around'>
+    <div className='w-full md:w-1/4 flex flex-col md:flex-row md:items-center justify-around'>
+      <h3 className='md:hidden mb-3'>Sort by</h3>
       <select
-        className='p-1 text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
+        className='p-1 mb-4 md:m-0 text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
         value={sortType.field}
         onChange={handleFieldChange}
       >
