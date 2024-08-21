@@ -81,10 +81,7 @@ export default function ReservationsList() {
   };
 
   return (
-    <section className='w-full h-full flex flex-col items-center content-center py-4'>
-      <h2 className='text-lg md:text-lg lg:text-xl xl:text-2xl font-semibold my-6 lg:my-10 md:my-10 text-sky-300'>
-        Restaurant Rervations List
-      </h2>
+    <section className='w-full h-full flex flex-col items-center content-center my-6 md:my-10 lg:my-12'>
       {/* Burger */}
       <button
         className='lg:hidden block text-indigo-200 mb-2'
@@ -117,7 +114,7 @@ export default function ReservationsList() {
         setSortType={setSortType}
       />
 
-      <div className='hidden md:w-full lg:flex items-center justify-between'>
+      <div className='hidden  md:p-4 md:container md:mx-auto lg:container  lg:flex items-center justify-between'>
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <Filters
           filterOptions={filterOptions}
@@ -125,7 +122,10 @@ export default function ReservationsList() {
         />
         <Sort sortType={sortType} setSortType={setSortType} />
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-16'>
+      <h2 className='mt-10 text-xl xl:text-2xl font-semibold text-sky-300'>
+        Restaurant Rervations List
+      </h2>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-10 sm:mx-4'>
         {filteredAndSortedData.map((reservation) => (
           <ReservationCard key={reservation.id} reservation={reservation} />
         ))}

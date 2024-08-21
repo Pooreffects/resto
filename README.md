@@ -11,13 +11,15 @@ It uses React + TS + Vite for the frontend, TailwindCSS for styling, and React Q
 - **Filter**: Apply filters based on status, shift, area, and date range.
 - **Sort**: Sort reservations by quantity or customer name.
 
-## Technologies Used
+## TechStack
 
 - **React**: Frontend framework for building the user interface.
 - **TailwindCSS**: Utility-first CSS framework for styling.
 - **React Query**: Data-fetching and state management library for handling server state.
 - **TypeScript**: TypeScript for type safety.
 - **Vite**: Build tool for fast development.
+
+[Delve into the Tech Decisions I Made](./tech-decisions.md)
 
 ## Setup Instructions
 
