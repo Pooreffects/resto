@@ -2,6 +2,7 @@ import Filters from './Filters';
 import SearchBar from './SearchBar';
 import Sort from './Sort';
 import { FilterOptions, SortType } from '../interfaces/reservationTypes';
+import { useEffect, useRef } from 'react';
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -24,13 +25,36 @@ export default function Sidebar({
   sortType,
   setSortType,
 }: SidebarProps) {
+  const sidebarRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setSidebarOpen(false);
+      }
+    }
+    if (sidebarOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [sidebarOpen, setSidebarOpen]);
+
   return (
     <div
-      className={`fixed inset-0 z-50 bg-gray-800 bg-opacity-75 md:hidden transition-transform duration-300 ${
+      className={`fixed inset-0 z-50 bg-gray-800 bg-opacity-75 md:hidden transition-transform duration-400 ${
         sidebarOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
-      <div className='absolute top-0 right-0 w-80 px-8 bg-slate-800 p-4 shadow-lg h-full'>
+      <div
+        ref={sidebarRef}
+        className='absolute top-0 right-0 w-80 px-8 bg-slate-800 p-4 shadow-lg h-full'
+      >
         <button
           className='text-indigo-100'
           onClick={() => setSidebarOpen(false)}

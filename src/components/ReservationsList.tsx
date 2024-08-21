@@ -33,8 +33,9 @@ export default function ReservationsList() {
     areaFilter: null,
   });
 
-  /* Sidebar Toggle */
+  /* Sidebar Toggle and Click Count for spamming limit*/
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
 
   const [sortType, setSortType] = useState<SortType>({
     field: 'quantity',
@@ -66,15 +67,28 @@ export default function ReservationsList() {
   if (isLoading) return <div>Loading ...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  const handleSidebarToggle = () => {
+    if (clickCount < 5) {
+      setSidebarOpen((prevState) => !prevState);
+      setClickCount((prevCount) => prevCount + 1);
+    }
+
+    if (clickCount === 4) {
+      setTimeout(() => {
+        setClickCount(0);
+      }, 5000);
+    }
+  };
+
   return (
     <section className='w-full h-full flex flex-col items-center content-center py-4'>
-      <h2 className='text-lg md:text-lg lg:text-xl xl:text-2xl font-semibold my-4 text-sky-300'>
+      <h2 className='text-lg md:text-lg lg:text-xl xl:text-2xl font-semibold my-6 lg:my-10 md:my-10 text-sky-300'>
         Restaurant Rervations List
       </h2>
-
+      {/* Burger */}
       <button
         className='lg:hidden block text-indigo-200 mb-2'
-        onClick={() => setSidebarOpen(true)}
+        onClick={handleSidebarToggle}
       >
         <svg
           className='w-8 h-8'

@@ -33,7 +33,7 @@ export default function Filters({
     <div className='md:w-1/2 flex flex-col gap-3 md:flex-row md:items-center justify-around'>
       <h3 className='md:hidden'>Filters</h3>
       <select
-        className='p-1 text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
+        className='p-3 cursor-pointer text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
         name='statusFilter'
         value={filterOptions.statusFilter || ''}
         onChange={handleSelectChange}
@@ -46,7 +46,7 @@ export default function Filters({
         ))}
       </select>
       <select
-        className='p-1 text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
+        className='p-3 cursor-pointer text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
         name='shiftFilter'
         value={filterOptions.shiftFilter || ''}
         onChange={handleSelectChange}
@@ -59,7 +59,7 @@ export default function Filters({
         ))}
       </select>
       <select
-        className='p-1 text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
+        className='p-3 cursor-pointer text-indigo-200 border rounded-md dark:bg-inherit dark:text-gray-300 focus:border-blue-400 dark:focus:border-sky-300 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40'
         name='areaFilter'
         value={filterOptions.areaFilter || ''}
         onChange={handleSelectChange}
