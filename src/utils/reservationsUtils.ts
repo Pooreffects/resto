@@ -38,11 +38,11 @@ export function filterReservations(
 /* Sort */
 export function sortReservations(
   reservations: Reservation[],
-  sortBy: 'date' | 'name'
+  sortBy: 'quantity' | 'customerName'
 ): Reservation[] {
   return reservations.sort((a, b) => {
-    if (sortBy === 'date') {
-      return new Date(a.start).getTime() - new Date(b.start).getTime();
+    if (sortBy === 'quantity') {
+      return a.quantity - b.quantity;
     } else {
       const nameA =
         `${a.customer.firstName} ${a.customer.lastName}`.toLowerCase();
